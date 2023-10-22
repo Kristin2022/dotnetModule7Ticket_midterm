@@ -1,0 +1,15 @@
+C:\Users\kontr\dotnetModule7Ticket_midterm\bin\Debug\net6.0\dotnetModule7Ticket_midterm.exe
+C:\Users\kontr\dotnetModule7Ticket_midterm\bin\Debug\net6.0\dotnetModule7Ticket_midterm.deps.json
+C:\Users\kontr\dotnetModule7Ticket_midterm\bin\Debug\net6.0\dotnetModule7Ticket_midterm.runtimeconfig.json
+C:\Users\kontr\dotnetModule7Ticket_midterm\bin\Debug\net6.0\dotnetModule7Ticket_midterm.dll
+C:\Users\kontr\dotnetModule7Ticket_midterm\bin\Debug\net6.0\dotnetModule7Ticket_midterm.pdb
+C:\Users\kontr\dotnetModule7Ticket_midterm\obj\Debug\net6.0\dotnetModule7Ticket_midterm.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\kontr\dotnetModule7Ticket_midterm\obj\Debug\net6.0\dotnetModule7Ticket_midterm.AssemblyInfoInputs.cache
+C:\Users\kontr\dotnetModule7Ticket_midterm\obj\Debug\net6.0\dotnetModule7Ticket_midterm.AssemblyInfo.cs
+C:\Users\kontr\dotnetModule7Ticket_midterm\obj\Debug\net6.0\dotnetModule7Ticket_midterm.csproj.CoreCompileInputs.cache
+C:\Users\kontr\dotnetModule7Ticket_midterm\obj\Debug\net6.0\dotnetModule7Ticket_midterm.dll
+C:\Users\kontr\dotnetModule7Ticket_midterm\obj\Debug\net6.0\refint\dotnetModule7Ticket_midterm.dll
+C:\Users\kontr\dotnetModule7Ticket_midterm\obj\Debug\net6.0\dotnetModule7Ticket_midterm.pdb
+C:\Users\kontr\dotnetModule7Ticket_midterm\obj\Debug\net6.0\dotnetModule7Ticket_midterm.genruntimeconfig.cache
+C:\Users\kontr\dotnetModule7Ticket_midterm\obj\Debug\net6.0\ref\dotnetModule7Ticket_midterm.dll
+C:\Users\kontr\dotnetModule7Ticket_midterm\obj\Debug\net6.0\dotnetModule7Ticket_midterm.csproj.AssemblyReference.cache

@@ -1,5 +1,7 @@
 public class Task : Ticket
 {
+    internal string Estimate;
+
     public string ProjectName { get; set; }
     public DateTime DueDate { get; set; }
 
@@ -10,12 +12,12 @@ public class Task : Ticket
     {
         ProjectName = projectName;
         DueDate = dueDate;
-    }
+    }    
 
     // Override 
     public override string DisplayTickets()
     {
-        return base.DisplayTickets + $"Id: {Id}\nSummary: {Summary}\nStatus: {Status}\nPriority: {Priority}\nSubmitter: {Submitter}\nAssigned: {Assigned}\nWatching: {Watching}" +
+        return base.DisplayTickets() +
                $"\nProjectName: {ProjectName}\nDueDate: {DueDate}";
     }
 }

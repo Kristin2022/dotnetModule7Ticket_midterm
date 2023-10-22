@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "dotnetModule7Ticket_midterm/1.0.0": {
+        "runtime": {
+          "dotnetModule7Ticket_midterm.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "dotnetModule7Ticket_midterm/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

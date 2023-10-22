@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "dgSpecHash": "VeqHeamTbvVrmuPyXZOv1VwqpLMUSUNhAUr5KqoT9HEFU5aksqb7mxQW3V58I/oM3tvcTHMtjBK7m20yE8p30g==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\kontr\\dotnetModule7Ticket_midterm\\dotnetModule7Ticket_midterm.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\kontr\\.nuget\\packages\\nlog\\5.1.1\\nlog.5.1.1.nupkg.sha512",
+    "C:\\Users\\kontr\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.21\\microsoft.aspnetcore.app.ref.6.0.21.nupkg.sha512",
+    "C:\\Users\\kontr\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\6.0.21\\microsoft.netcore.app.host.win-x64.6.0.21.nupkg.sha512",
+    "C:\\Users\\kontr\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.21\\microsoft.netcore.app.ref.6.0.21.nupkg.sha512",
+    "C:\\Users\\kontr\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.21\\microsoft.windowsdesktop.app.ref.6.0.21.nupkg.sha512"
+  ],
+  "logs": []
+}
