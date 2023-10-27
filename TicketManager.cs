@@ -1,110 +1,170 @@
-using Microsoft.VisualBasic;
 using NLog;
-using System;
-using System.Collections.Generic;
-
 public class TicketManager
 {
-    public List<Ticket> Tickets { get; set; }
+    private const string Value = "Enter due date ()";
 
-    public TicketManager(string filePath)
+    //Object
+    public TicketFile<DefectBug> DefectBugFile { get; set; }
+    // public TicketFile<Enhancement> EnhancementFile { get; set; }
+    // public TicketFile<Task> TaskFile { get; set; }
+
+    // Constructor 
+    public TicketManager()
     {
-        Tickets = new List<Ticket>();
-        Enhancement enhancement = new ();
-        Task task = new Task();
+        DefectBugFile = new TicketFile<DefectBug>("DefectBug.csv");
+        // EnhancementFile = new TicketFile<Enhancement>("Enhancements.csv");
+        // TaskFile = new TicketFile<Task>("Task.csv");
     }
+
     public void Run()
     {
         while (true)
         {
             Console.WriteLine("1) Display tickets");
-            Console.WriteLine("2) Enter ticket");
-            Console.WriteLine("3) Exit");
+            Console.WriteLine("2) Enter defect bug ticket");
+            Console.WriteLine("3) Enter enhancement ticket");
+            Console.WriteLine("4) Enter task ticket");
+            Console.WriteLine("5) Exit");
             string resp = Console.ReadLine();
 
             if (resp == "1")
             {
                 DisplayTickets();
+
             }
+            //DefectBug
             else if (resp == "2")
             {
-                Console.WriteLine("Enter severity");
-                string severity = Console.ReadLine();
-                Console.WriteLine("Enter software");
-                string software = Console.ReadLine();
-                Console.WriteLine("Enter reason");
-                string reason = Console.ReadLine();
-                Console.WriteLine("Enter the estimate");
-                double estimate = Console.ReadLine();
-                Console.WriteLine("Enter the cost");
-                double cost = Console.ReadLine(); 
-                Console.WriteLine("Enter project name");
-                string projectName = Console.ReadLine();
-                Console.WriteLine("Enter due date");
-                string dueDate = Console.ReadLine();
-                EnterTicket(severity, software, reason, estimate, projectName, dueDate, GetEstimate());
+                DefectBug defectBug = EnterDefectBugTicket();
+                DefectBugFile.Tickets.Add(defectBug);
+                DefectBugFile.WriteTicket(defectBug);
             }
+            //Enhancement
             else if (resp == "3")
+            {
+                // Enhancement enhancement = EnterEnhancementTicket();
+                // EnhancementFile.Tickets.Add(enhancement);
+                // EnhancementFile.WriteTickets();
+            }
+            //Task
+            else if (resp == "4")
+            {
+                // Task task = EnterTaskTicket();
+                // TaskFile.Tickets.Add(task);
+                // TaskFile.WriteTickets();
+            }
+            //Exit
+            else if (resp == "5")
             {
                 break;
             }
         }
     }
-
-    private void EnterTicket(string severity, string software, string reason, double estimate, string projectName, string dueDate, Task task)
-    {
-        throw new NotImplementedException();
-    }
-
-    private Task GetEstimate()
-    {
-        throw new NotImplementedException();
-    }
-
     public void DisplayTickets()
     {
-        foreach (var ticket in Tickets)
-        {
-            Console.WriteLine(ticket.ToString());
+        System.Console.WriteLine("DefectBug tickets: ");
+        foreach(var t in DefectBugFile.Tickets){
+            t.Display();
         }
     }
-public void EnterTicket(string severity, string software, string reason, double estimate, string projectName, string dueDate)
-{
-    Console.WriteLine("Enter the estimate");
-    string estimateInput = Console.ReadLine();
-        if (!double.TryParse(estimateInput,
-                             out double estimateInput))
-        {
-            Console.WriteLine("Invalid input. Please enter a number for the estimate.");
-            return;
-        }
-
-        Console.WriteLine("Enter the cost");
-    string costInput = Console.ReadLine();
-    double cost;
-    if (!double.TryParse(costInput, out cost))
+    public DefectBug EnterDefectBugTicket()
     {
-        Console.WriteLine("Invalid input. Please enter a number for the cost.");
-        return;
+        DefectBug defectBug = new DefectBug();
+        Console.WriteLine("Enter ticket id");
+        defectBug.Id = int.Parse(Console.ReadLine());
+        Console.WriteLine("Enter summary");
+        defectBug.Summary = Console.ReadLine();
+        Console.WriteLine("Enter status");
+        defectBug.Status = Console.ReadLine();
+        Console.WriteLine("Enter priority");
+        defectBug.Priority = Console.ReadLine();
+        Console.WriteLine("Enter submitter");
+        defectBug.Submitter = Console.ReadLine();
+        Console.WriteLine("Enter assigned");
+        defectBug.Assigned = Console.ReadLine();
+        Console.WriteLine("Enter watching");
+        defectBug.Watching = Console.ReadLine();
+        Console.WriteLine("Enter severity");
+        defectBug.Severity = Console.ReadLine();
+
+        return defectBug;
     }
 
-    Enhancement newEnhancement = new Enhancement 
-    {
-        Severity = severity,
-        Software = software,
-        Reason = reason,
-        Estimate = estimate,
-        Cost = cost,
-        ProjectName = projectName,
-        DueDate = dueDate
-    };
-    Tickets.Add(newEnhancement);
+    // public Enhancement EnterEnhancementTicket()
+    // {
+    //     Console.WriteLine("Enter ticket id");
+    //     int id = int.Parse(Console.ReadLine());
+    //     Console.WriteLine("Enter summary");
+    //     string summary = Console.ReadLine();
+    //     Console.WriteLine("Enter status");
+    //     string status = Console.ReadLine();
+    //     Console.WriteLine("Enter priority");
+    //     string priority = Console.ReadLine();
+    //     Console.WriteLine("Enter submitter");
+    //     string submitter = Console.ReadLine();
+    //     Console.WriteLine("Enter assigned");
+    //     string assigned = Console.ReadLine();
+    //     Console.WriteLine("Enter watching");
+    //     string watching = Console.ReadLine();
+    //     Console.WriteLine("Enter severity");
+    //     string severity = Console.ReadLine();
+    //     Console.WriteLine("Enter software");
+    //     string software = Console.ReadLine();
+    //     while (true)
+    //     {
+    //         // try
+    //         // {
+    //             Console.WriteLine("Enter cost");
+    //             double cost = double.Parse(Console.ReadLine());
+    //         // }
+    //         // catch (FormatException)
+    //         // {
+    //         //     System.Console.WriteLine("Invaild entry.You must enter a number.");
+    //         // }   
+    //         Console.WriteLine("Enter reason");
+    //         string reason = Console.ReadLine();
+    //         Console.WriteLine("Enter estimate");
+    //         double estimate = double.Parse(Console.ReadLine());
 
-    Task newTask = new Task
-    {
-        ProjectName = projectName,
-        DueDate = dueDate
-    };
-    Tickets.Add(newTask);
+    //         Enhancement enhancement = new Enhancement(id, summary, status, priority, submitter, assigned, watching, severity, software, cost, reason, estimate);
+    //         return enhancement;
+    //     }
+    // }
+
+    // public Task EnterTaskTicket()
+    // {
+    //     Console.WriteLine("Enter ticket id");
+    //     int id = int.Parse(Console.ReadLine());
+    //     Console.WriteLine("Enter summary");
+    //     string summary = Console.ReadLine();
+    //     Console.WriteLine("Enter status");
+    //     string status = Console.ReadLine();
+    //     Console.WriteLine("Enter priority");
+    //     string priority = Console.ReadLine();
+    //     Console.WriteLine("Enter submitter");
+    //     string submitter = Console.ReadLine();
+    //     Console.WriteLine("Enter assigned");
+    //     string assigned = Console.ReadLine();
+    //     Console.WriteLine("Enter watching");
+    //     string watching = Console.ReadLine();
+    //     System.Console.WriteLine("Enter severity");
+    //     string severity = Console.ReadLine();
+    //     Console.WriteLine("Enter project name");
+    //     string projectName = Console.ReadLine();
+    //     Console.WriteLine("Please enter the due date in the format yyyy-mm-dd:");
+    //     string input = Console.ReadLine();
+    //     DateTime dueDate;
+    //     if (DateTime.TryParse(input, out dueDate))
+    //     {
+    //         Task task = new Task(id, summary, status, priority, submitter, assigned, watching, severity, projectName, dueDate);
+    //         return task;
+    //     }
+    //     else
+    //     {
+    //         Console.WriteLine("Invalid date format. Please enter the date in the format yyyy-mm-dd.");
+    //         return null;
+    //     }
+    // }
 }
-}
+
+

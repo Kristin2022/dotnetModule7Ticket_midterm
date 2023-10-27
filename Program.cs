@@ -1,17 +1,14 @@
-﻿using System.Collections.Specialized;
-using NLog;
-using System.IO;
+﻿using NLog;
 
-string filePath = "filePath";
-TicketManager ticketManager = new TicketManager(filePath);
+// string filePath = "filePath";
+TicketManager ticketManager = new TicketManager();
 
 string path = Directory.GetCurrentDirectory() + "\\nlog.config";
 // create instance of Logger
 var logger = LogManager.LoadConfiguration(path).GetCurrentClassLogger();
 logger.Info("Program started");
 
-// Create an instance of TicketManager and run it
-TicketManager _ = new TicketManager(filePath);
+// TicketManager _ = new(filePath);
 ticketManager.Run();
 
 logger.Info("Program ended");

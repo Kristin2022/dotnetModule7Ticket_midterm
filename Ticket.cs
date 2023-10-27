@@ -1,7 +1,18 @@
 using NLog;
 public abstract class Ticket
 {
-    // common properties to all tickets
+    // protected Ticket(int id, string summary, string status, string priority, string submitter, string assigned, string watching, string severity)
+    // {
+    //     Id = id;
+    //     Summary = summary;
+    //     Status = status;
+    //     Priority = priority;
+    //     Submitter = submitter;
+    //     Assigned = assigned;
+    //     Watching = watching;
+    //     Severity = severity;
+    // }
+
     public int Id { get; set; }
     public string Summary { get; set; }
     public string Status { get; set; }
@@ -9,36 +20,34 @@ public abstract class Ticket
     public string Submitter { get; set; }
     public string Assigned { get; set; }
     public string Watching { get; set; }
-    public string Severity { get; internal set; }
+    public string Severity { get; set; }
 
-    // Constructor
-    public Ticket(int id, string summary, string status, string priority, string submitter, string assigned, string watching, string severity)
+    public virtual void FromCsvLine(string line)
     {
-        Id = id;
-        Summary = summary;
-        Status = status;
-        Priority = priority;
-        Submitter = submitter;
-        Assigned = assigned;
-        Watching = watching;
-        Severity = severity;
+        var fields = line.Split(',');
+        Id = int.Parse(fields[0]);
+        Summary = fields[1];
+        Status = fields[2];
+        Priority = fields[3];
+        Submitter = fields[4];
+        Assigned = fields[5];
+        Watching = fields[6];
+        Severity = fields[7];
     }
 
-    protected Ticket(int id, string summary, string status, string priority, string submitter, string assigned, string watching)
+    public virtual string ToCsvLine()
     {
-        Id = id;
-        Summary = summary;
-        Status = status;
-        Priority = priority;
-        Submitter = submitter;
-        Assigned = assigned;
-        Watching = watching;
+        return $"{Id},{Summary},{Status},{Priority},{Submitter},{Assigned},{Watching},{Severity}";
     }
 
-
-    // method to be overridden in classes
-    public virtual string DisplayTickets()
+    public virtual void Display()
     {
-        return $"Id: {Id}\nSummary: {Summary}\nStatus: {Status}\nPriority: {Priority}\nSubmitter: {Submitter}\nAssigned: {Assigned}\nWatching: {Watching}\nSeverity: {Severity}";
+        Console.WriteLine($"{Id},{Summary},{Status},{Priority},{Submitter},{Assigned},{Watching},{Severity}");
     }
 }
+
+
+
+
+
+

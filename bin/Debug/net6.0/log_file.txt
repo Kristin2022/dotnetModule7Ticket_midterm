@@ -1,0 +1,14 @@
+2023-10-27 10:11:01.6131|INFO|Program|Program started
+2023-10-27 10:11:45.7848|INFO|Program|Program ended
+2023-10-27 10:12:14.5538|INFO|Program|Program started
+2023-10-27 10:12:27.5290|INFO|Program|Program ended
+2023-10-27 10:12:50.9486|INFO|Program|Program started
+2023-10-27 10:13:11.5403|INFO|Program|Program ended
+2023-10-27 10:14:26.3514|INFO|Program|Program started
+2023-10-27 10:14:56.4633|INFO|Program|Program ended
+2023-10-27 10:15:06.7780|INFO|Program|Program started
+2023-10-27 10:18:34.2517|INFO|Program|Program ended
+2023-10-27 10:18:39.6775|INFO|Program|Program started
+2023-10-27 10:25:18.3397|INFO|Program|Program ended
+2023-10-27 10:25:24.7605|INFO|Program|Program started
+2023-10-27 10:25:33.5878|INFO|Program|Program ended
