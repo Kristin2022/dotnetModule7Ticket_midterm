@@ -1,6 +1,21 @@
 using NLog;
 public abstract class Ticket
 {
+    protected Ticket(int id, string summary, string status, string priority, string submitter, string assigned, string watching)
+    {
+        Id = id;
+        Summary = summary;
+        Status = status;
+        Priority = priority;
+        Submitter = submitter;
+        Assigned = assigned;
+        Watching = watching;
+    }
+
+    protected Ticket()
+    {
+    }
+
     // protected Ticket(int id, string summary, string status, string priority, string submitter, string assigned, string watching, string severity)
     // {
     //     Id = id;
@@ -20,7 +35,7 @@ public abstract class Ticket
     public string Submitter { get; set; }
     public string Assigned { get; set; }
     public string Watching { get; set; }
-    public string Severity { get; set; }
+    //public string Severity { get; set; }
 
     public virtual void FromCsvLine(string line)
     {
@@ -32,22 +47,16 @@ public abstract class Ticket
         Submitter = fields[4];
         Assigned = fields[5];
         Watching = fields[6];
-        Severity = fields[7];
+        //Severity = fields[7];
     }
 
     public virtual string ToCsvLine()
     {
-        return $"{Id},{Summary},{Status},{Priority},{Submitter},{Assigned},{Watching},{Severity}";
+        return $"{Id},{Summary},{Status},{Priority},{Submitter},{Assigned},{Watching}";
     }
 
     public virtual void Display()
     {
-        Console.WriteLine($"{Id},{Summary},{Status},{Priority},{Submitter},{Assigned},{Watching},{Severity}");
+        Console.WriteLine($"{Id},{Summary},{Status},{Priority},{Submitter},{Assigned},{Watching}");
     }
 }
-
-
-
-
-
-
