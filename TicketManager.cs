@@ -70,14 +70,7 @@ public class TicketManager
         foreach (var t in DefectBugFile.Tickets)
         {
             t.Display();
-
-
         }
-    }
-
-
-    public void DisplayEnhancementTickets()
-    {
         System.Console.WriteLine("Enhancement tickets: ");
         foreach (var t in EnhancementFile.Tickets)
         {
