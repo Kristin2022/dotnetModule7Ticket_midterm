@@ -5,7 +5,7 @@ public class TicketManager
     
     //Object
     public TicketFile<DefectBug> DefectBugFile { get; set; }
-   // public TicketFile<Enhancement> EnhancementFile { get; set; }
+    public TicketFile<Enhancement> EnhancementFile { get; set; }
     // public TicketFile<Task> TaskFile { get; set; }
 
 
@@ -13,7 +13,7 @@ public class TicketManager
     public TicketManager()
     {
         DefectBugFile = new TicketFile<DefectBug>("DefectBug.csv");
-        //EnhancementFile = new TicketFile<Enhancement>("Enhancement.csv");
+        EnhancementFile = new TicketFile<Enhancement>("Enhancement.csv");
         //TaskFile = new TicketFile<Task>("Task.csv");
     }
 
@@ -44,12 +44,12 @@ public class TicketManager
                 DefectBugFile.WriteTicket(defectBug);
             }
             // //Enhancement
-            // else if (resp == "3")
-            // {
-            //     Enhancement enhancement = EnterEnhancementTicket();
-            //     EnhancementFile.Tickets.Add(enhancement);
-            //     EnhancementFile.WriteTicket(enhancement);
-            // }
+            else if (resp == "3")
+            {
+                Enhancement enhancement = EnterEnhancementTicket();
+                EnhancementFile.Tickets.Add(enhancement);
+                EnhancementFile.WriteTicket(enhancement);
+            }
             //Task
             else if (resp == "4")
             {
@@ -76,14 +76,14 @@ public class TicketManager
     }
 
 
-    // // public void DisplayEnhancementTickets()
-    // // {
-    // //     System.Console.WriteLine("Enhancement tickets: ");
-    // //     foreach (var t in EnhancementFile.Tickets)
-    // //     {
-    // //         t.Display();
-    //      }
-    // }
+    public void DisplayEnhancementTickets()
+    {
+        System.Console.WriteLine("Enhancement tickets: ");
+        foreach (var t in EnhancementFile.Tickets)
+        {
+            t.Display();
+         }
+    }
 
 
     public DefectBug EnterDefectBugTicket()
@@ -111,35 +111,36 @@ public class TicketManager
     }
 
 
-    // public Enhancement EnterEnhancementTicket()
-    // {
-    //     Enhancement enhancement = new Enhancement();
-    //     Console.WriteLine("Enter ticket id");
-    //     int id = int.Parse(Console.ReadLine());
-    //     Console.WriteLine("Enter summary");
-    //     string summary = Console.ReadLine();
-    //     Console.WriteLine("Enter status");
-    //     string status = Console.ReadLine();
-    //     Console.WriteLine("Enter priority");
-    //     string priority = Console.ReadLine();
-    //     Console.WriteLine("Enter submitter");
-    //     string submitter = Console.ReadLine();
-    //     Console.WriteLine("Enter assigned");
-    //     string assigned = Console.ReadLine();
-    //     Console.WriteLine("Enter watching");
-    //     string watching = Console.ReadLine();
-    //     Console.WriteLine("Enter severity");
-    //     string severity = Console.ReadLine();
-    //     Console.WriteLine("Enter software");
-    //     string software = Console.ReadLine();
-    //     Console.WriteLine("Enter cost");
-    //     double cost = double.Parse(Console.ReadLine());
-    //     Console.WriteLine("Enter reason");
-    //     string reason = Console.ReadLine();
+    public Enhancement EnterEnhancementTicket()
+    {
+        Enhancement enhancement = new Enhancement();
+        Console.WriteLine("Enter ticket id");
+        enhancement.Id = int.Parse(Console.ReadLine());
+        Console.WriteLine("Enter summary");
+        enhancement.Summary = Console.ReadLine();
+        Console.WriteLine("Enter status");
+        enhancement.Status = Console.ReadLine();
+        Console.WriteLine("Enter priority");
+        enhancement.Priority = Console.ReadLine();
+        Console.WriteLine("Enter submitter");
+        enhancement.Submitter = Console.ReadLine();
+        Console.WriteLine("Enter assigned");
+        enhancement.Assigned = Console.ReadLine();
+        Console.WriteLine("Enter watching");
+        enhancement.Watching = Console.ReadLine();
+        Console.WriteLine("Enter severity");
+        enhancement.Severity = Console.ReadLine();
+        Console.WriteLine("Enter software");
+        enhancement.Software = Console.ReadLine();
+        Console.WriteLine("Enter cost");
+        enhancement.Cost = double.Parse(Console.ReadLine());
+        Console.WriteLine("Enter reason");
+        enhancement.Reason = Console.ReadLine();
+        Console.WriteLine("Enter estimate");
+        enhancement.Estimate = double.Parse(Console.ReadLine());
 
-
-    //     return enhancement;
-    // }
+        return enhancement;
+    }
 
 // public Task EnterTaskTicket()
 // {
