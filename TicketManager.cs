@@ -1,22 +1,15 @@
 using NLog;
 public class TicketManager
 {
-    // private const string Value = "Enter due date ()";
-    
-    //Object
     public TicketFile<DefectBug> DefectBugFile { get; set; }
     public TicketFile<Enhancement> EnhancementFile { get; set; }
-    // public TicketFile<Task> TaskFile { get; set; }
-
-
-    // Constructor
+    public TicketFile<Task> TaskFile { get; set; }
     public TicketManager()
     {
         DefectBugFile = new TicketFile<DefectBug>("DefectBug.csv");
         EnhancementFile = new TicketFile<Enhancement>("Enhancement.csv");
-        //TaskFile = new TicketFile<Task>("Task.csv");
+        TaskFile = new TicketFile<Task>("Task.csv");
     }
-
 
     public void Run()
     {
@@ -43,7 +36,7 @@ public class TicketManager
                 DefectBugFile.Tickets.Add(defectBug);
                 DefectBugFile.WriteTicket(defectBug);
             }
-            // //Enhancement
+            //Enhancement
             else if (resp == "3")
             {
                 Enhancement enhancement = EnterEnhancementTicket();
@@ -53,9 +46,9 @@ public class TicketManager
             //Task
             else if (resp == "4")
             {
-                // Task task = EnterTaskTicket();
-                // TaskFile.Tickets.Add(task);
-                // TaskFile.WriteTickets();
+                Task task = EnterTaskTicket();
+                TaskFile.Tickets.Add(task);
+                TaskFile.WriteTicket(task);
             }
             //Exit
             else if (resp == "5")
@@ -75,9 +68,13 @@ public class TicketManager
         foreach (var t in EnhancementFile.Tickets)
         {
             t.Display();
-         }
+        }
+        System.Console.WriteLine("Task tickets: ");
+        foreach (var t in TaskFile.Tickets)
+        {
+            t.Display();
+        }
     }
-
 
     public DefectBug EnterDefectBugTicket()
     {
@@ -99,10 +96,8 @@ public class TicketManager
         Console.WriteLine("Enter severity");
         defectBug.Severity = Console.ReadLine();
 
-
         return defectBug;
     }
-
 
     public Enhancement EnterEnhancementTicket()
     {
@@ -135,39 +130,31 @@ public class TicketManager
         return enhancement;
     }
 
-// public Task EnterTaskTicket()
-// {
-//     Console.WriteLine("Enter ticket id");
-//     int id = int.Parse(Console.ReadLine());
-//     Console.WriteLine("Enter summary");
-//     string summary = Console.ReadLine();
-//     Console.WriteLine("Enter status");
-//     string status = Console.ReadLine();
-//     Console.WriteLine("Enter priority");
-//     string priority = Console.ReadLine();
-//     Console.WriteLine("Enter submitter");
-//     string submitter = Console.ReadLine();
-//     Console.WriteLine("Enter assigned");
-//     string assigned = Console.ReadLine();
-//     Console.WriteLine("Enter watching");
-//     string watching = Console.ReadLine();
-//     System.Console.WriteLine("Enter severity");
-//     string severity = Console.ReadLine();
-//     Console.WriteLine("Enter project name");
-//     string projectName = Console.ReadLine();
-//     Console.WriteLine("Please enter the due date in the format yyyy-mm-dd:");
-//     string input = Console.ReadLine();
-//     DateTime dueDate;
-//     if (DateTime.TryParse(input, out dueDate))
-//     {
-//         Task task = new Task(id, summary, status, priority, submitter, assigned, watching, severity, projectName, dueDate);
-//         return task;
-//     }
-//     else
-//     {
-//         Console.WriteLine("Invalid date format. Please enter the date in the format yyyy-mm-dd.");
-//         return null;
-//     }
+    public Task EnterTaskTicket()
+    {
+        Task task = new ();
+        Console.WriteLine("Enter ticket id");
+        task.Id = int.Parse(Console.ReadLine());
+        Console.WriteLine("Enter summary");
+        task.Summary = Console.ReadLine();
+        Console.WriteLine("Enter status");
+        task.Status = Console.ReadLine();
+        Console.WriteLine("Enter priority");
+        task.Priority = Console.ReadLine();
+        Console.WriteLine("Enter submitter");
+        task.Submitter = Console.ReadLine();
+        Console.WriteLine("Enter assigned");
+        task.Assigned = Console.ReadLine();
+        Console.WriteLine("Enter watching");
+        task.Watching = Console.ReadLine();
+        Console.WriteLine("Project name");
+        task.ProjectName = Console.ReadLine();
+        Console.WriteLine("Due date");
+        task.DueDate = DateTime.Parse(Console.ReadLine());
+
+        return task;
+    }
+
 }
 
 
